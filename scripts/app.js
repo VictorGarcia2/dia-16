@@ -241,6 +241,28 @@ const conversaciones = [
     },
 ];
 
- // Crea una funcion que imprima en pantalla todos los usuarios coyo nombre sea diferente de Miguel Salinas sin repetir ninguno (array.includes (utiliza return or brack))
+// Crea una funcion que imprima en pantalla todos los usuarios cuyo nombre sea diferente de Miguel Salinas sin repetir ninguno (array.includes (utiliza return or brack))
+function nameUsuarios() {
+    for (let i = 0; i < conversaciones.length; i++) {
+        let primero = conversaciones[i].conversacion
 
-  /// crea una funcion que reciba como parametro un numero entero positivo y retorne el array de conversaciones correspondiente a ese numero.
+        for (let i = 0; i < primero.length; i++) {
+            let conv = primero[i]
+            if(conv.remitente !== "Miguel Salinas"){
+                    console.log(conv.remitente, conv);
+                }
+        }
+    }
+}
+nameUsuarios()
+/// crea una funcion que reciba como parametro un numero entero positivo y retorne el array de conversaciones correspondiente a ese numero.
+
+
+/*   function numeroEntero(numeros){
+    for (let i = 0; i < conversaciones.length; i++) {
+        if(conversaciones[i].userId === parseInt(numeros)){
+            console.log(conversaciones[i].userId, conversaciones[i]);
+        }
+    }
+  }
+  numeroEntero(1) */
