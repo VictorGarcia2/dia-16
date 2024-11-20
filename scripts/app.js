@@ -261,11 +261,11 @@ nameUsuarios()
 /// crea una funcion que reciba como parametro un numero entero positivo y retorne el array de conversaciones correspondiente a ese numero.
 
 
-/*   function numeroEntero(numeros){
+ function numeroEntero(numeros){
     for (let i = 0; i < conversaciones.length; i++) {
         if(conversaciones[i].userId === parseInt(numeros)){
             console.log(conversaciones[i].userId, conversaciones[i]);
         }
     }
   }
-  numeroEntero(1) */
+  numeroEntero(1) 
