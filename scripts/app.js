@@ -1,3 +1,5 @@
+const figure = document.querySelector('#user_list')
+const elClick = document.querySelector('#click')
 const conversaciones = [
     {
         userId: 1,
@@ -242,30 +244,95 @@ const conversaciones = [
 ];
 
 // Crea una funcion que imprima en pantalla todos los usuarios cuyo nombre sea diferente de Miguel Salinas sin repetir ninguno (array.includes (utiliza return or brack))
- function nameUsuarios() {
+function nameUsuarios() {
+   figure.innerHTML = ""
     for (let i = 0; i < conversaciones.length; i++) {
         let primero = conversaciones[i].conversacion
-
+        let id = conversaciones[i].userId
         for (let i = 0; i < primero.length; i++) {
             let conv = primero[i]
-            if(conv.remitente !== "Miguel Salinas"){
+            if (conv.remitente !== "Miguel Salinas") {
                 let rs = conv.remitente
-                if(rs !== "Juan Pérez")
-                    console.log(rs);
-                }
+                iterar(id, rs)
+                break
+            }
         }
     }
 }
-
-nameUsuarios() 
-/// crea una funcion que reciba como parametro un numero entero positivo y retorne el array de conversaciones correspondiente a ese numero.
-
-
- function numeroEntero(numeros){
-    for (let i = 0; i < conversaciones.length; i++) {
-        if(conversaciones[i].userId === parseInt(numeros)){
-            console.log(conversaciones[i].userId, conversaciones[i]);
-        }
+nameUsuarios()
+function iterar(id, rs) {
+    let template = `<div class="d-flex align-items-center gap-3 user-item" id="${id}">
+              <figure class="user-image ratio ratio-1x1 rounded-5 overflow-hidden m-0">
+                  <img src="https://robohash.org/${id}" alt="">
+              </figure>
+              <h3 class="fs-5 text-white">${rs}</h3>
+          </div>
+  `
+    figure.innerHTML += template
+    numeroEntero(id)
+}
+let usuarios = document.querySelectorAll('.user-item')
+let elMain = document.querySelector('main')
+let header = document.querySelector('.main-user')
+function chat() {
+    for (let i = 0; i < usuarios.length; i++) {
+        usuarios[i].addEventListener('click', function () {
+            let miClick = parseInt(this.id)
+            chatId(miClick)
+            console.log(miClick);
+        }) 
     }
-  }
-  numeroEntero(1) 
+}
+chat()
+/// crea una funcion que reciba como parametro un numero entero positivo y retorne el array de conversaciones correspondiente a ese numero.
+function chatId(nwId){
+   for (let i = 0; i < conversaciones.length; i++) {
+       let rs = conversaciones[i]
+       if(rs.userId === parseInt(nwId)){
+         loadMessage(rs)
+            break
+       }
+   }
+ } 
+function loadMessage(conversacion){
+    elMain.innerHTML = ""
+     let message = conversacion.conversacion
+    for (let i = 0; i < message.length; i++) {
+        let current = message[i]
+        let messageUserId = conversacion.userId
+        let isNotMiguel = ""
+        if(current.remitente === 'Miguel Salinas'){
+            messageUserId = 13
+            isNotMiguel = "flex-row-reverse"
+        }
+       let template = `
+       <div class="w-100 py-3 message d-flex gap-2 align-items-center ${isNotMiguel}">
+                    <figure class="ratio ratio-1x1 bg-primary overflow-hidden rounded-circle user-image m-0 ">
+                        <img src="https://robohash.org/${messageUserId}" alt="random robot">
+                    </figure>
+
+                    <div class="w-75  bg-dark p-2 bg-opacity-50 text-warning shadow rounded-2">
+                        <div class="d-flex justify-content-between message-header">
+                            <h5 class="fst-italic text-white">${current.remitente}</h5>
+                            <h6 class="fst-italic text-white">${current.fechaEnvio}</h6>
+                        </div>
+                        <p>
+                        ${current.mensaje}
+                        </p>
+                    </div>
+                </div>
+       `
+       elMain.innerHTML += template
+        
+    }
+}
+
+function numeroEntero(id){
+   for (let i = 0; i < conversaciones.length; i++) {
+       if(conversaciones[i].userId === parseInt(id)){
+           
+       }
+   }
+ }
+
+

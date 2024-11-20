@@ -1,0 +1,59 @@
+.aside{
+    min-width: 18rem;
+}
+
+.user-image{
+    width: 4rem;
+    aspect-ratio: 1/1;
+    background-color: rgb(169, 78, 255);
+    
+}
+.user-image-item{
+    width: 4rem;
+    aspect-ratio: 1/1;
+    background-color: rgb(255, 0, 0);
+    
+}
+.user-item{
+    cursor: pointer;
+}
+.overt{
+    overflow-y: scroll ;
+    height: 85vh !important;
+}
+.bg{
+    background-color: #e5e5f7;
+opacity: 1;
+background-image: radial-gradient(#ff0303 0.8500000000000001px, #e5e5f7 0.8500000000000001px);
+background-size: 17px 17px;
+}
+.main{
+    height: 85vh;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #91bfff;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+@media  (min-width: 768px){
+    .menu-button{
+        visibility: hidden;
+    }
+}
